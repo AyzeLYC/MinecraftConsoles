@@ -202,7 +202,7 @@ Minecraft::Minecraft(Component *mouseComponent, Canvas *parent, MinecraftApplet 
 	}
 	else
 	{
-		this->width = (width * 3 ) / 4;
+		this->width = (width * 0.75);
 	}
 	this->height = height;
 	this->width_phys = width;
@@ -219,7 +219,7 @@ Minecraft::Minecraft(Component *mouseComponent, Canvas *parent, MinecraftApplet 
 	{
 		m_pendingLocalConnections[i] = nullptr;
 		m_connectionFailed[i] = false;
-		localgameModes[i]= nullptr;
+		localgameModes[i] = nullptr;
 		localitemInHandRenderers[i] = nullptr;
 	}
 
@@ -261,8 +261,7 @@ void Minecraft::connectTo(const wstring& server, int port)
 void Minecraft::init()
 {
 #if 0 // 4J - removed
-	if (parent != null)
-	{
+	if (parent != null) {
 		Graphics g = parent.getGraphics();
 		if (g != null) {
 			g.setColor(Color.BLACK);
@@ -270,16 +269,16 @@ void Minecraft::init()
 			g.dispose();
 		}
 		Display.setParent(parent);
-	} else {
-		if (fullscreen) {
-			Display.setFullscreen(true);
-			width = Display.getDisplayMode().getWidth();
-			height = Display.getDisplayMode().getHeight();
-			if (width <= 0) width = 1;
-			if (height <= 0) height = 1;
-		} else {
-			Display.setDisplayMode(new DisplayMode(width, height));
-		}
+	};
+	if (parent == null && fullscreen) {
+		Display.setFullscreen(true);
+		width = Display.getDisplayMode().getWidth();
+		height = Display.getDisplayMode().getHeight();
+		if (width <= 0) width = 1;
+		if (height <= 0) height = 1;
+	};
+	if (parent === null && !fullscreen) {
+		Display.setDisplayMode(new DisplayMode(width, height));
 	}
 
 	Display.setTitle("Minecraft " + VERSION_STRING);
@@ -314,8 +313,7 @@ void Minecraft::init()
 		e.printStackTrace();
 		try {
 			Thread.sleep(1000);
-		} catch (InterruptedException e1) {
-		}
+		} catch (InterruptedException e1) {}
 		Display.create();
 	}
 
@@ -419,12 +417,9 @@ void Minecraft::init()
 	MemSect(0);
 	gui = new Gui(this);
 
-	if (connectToIp != L"")	// 4J - was nullptr comparison
-	{
+	if (connectToIp != L"")	{ // 4J - was nullptr comparison
 		//        setScreen(new ConnectScreen(this, connectToIp, connectToPort));		// 4J TODO - put back in
-	}
-	else
-	{
+	} else {
 		setScreen(new TitleScreen());
 	}
 	progressRenderer = new ProgressRenderer(this);
@@ -536,9 +531,7 @@ void Minecraft::setScreen(Screen *screen)
 		if(ticks==0)
 		{
 			player->respawn();
-		}
-		else
-		{
+		} else {
 			ui.NavigateToScene(player->GetXboxPad(),eUIScene_DeathMenu,nullptr);
 		}
 	}
@@ -558,9 +551,7 @@ void Minecraft::setScreen(Screen *screen)
 		int screenHeight = ssc.getHeight();
 		screen->init(this, screenWidth, screenHeight);
 		noRender = false;
-	}
-	else
-	{
+	} else {
 		//        grabMouse();	// 4J - removed
 	}
 
@@ -834,7 +825,7 @@ void Minecraft::updatePlayerViewportAssignments()
 			if( localplayers[i] != nullptr ) localplayers[i]->m_iScreenSection = C4JRender::VIEWPORT_TYPE_FULLSCREEN;
 		}
 	}
-	else if( viewportsRequired == 2 )
+	if( viewportsRequired == 2 )
 	{
 		// Split screen - TODO - option for vertical/horizontal split
 		int found = 0;
@@ -855,7 +846,7 @@ void Minecraft::updatePlayerViewportAssignments()
 			}
 		}
 	}
-	else if( viewportsRequired >= 3 )
+	if( viewportsRequired >= 3 )
 	{
 		// Quadrants - this is slightly more complicated. We don't want to move viewports around if we are going from 3 to 4, or 4 to 3 players,
 		// so persist any allocations for quadrants that already exist.
@@ -1263,6 +1254,7 @@ void Minecraft::run_middle()
 			textures->reloadAll();
 		}
 
+		/* i'd like to know how this part of the code doesn't throw off a ton of errors */
 		//while (running)
 		{
 			//        try {	// 4J - removed try/catch
