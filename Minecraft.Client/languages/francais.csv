@@ -1,5 +1,14 @@
 "encoding","utf-8"
 
+"minecraft.language.dutch.local_name","Néerlandais"
+"minecraft.language.english.local_name","Anglais"
+"minecraft.language.french.local_name","Français"
+"minecraft.language.belgian_french.local_name","Français Belge"
+"minecraft.language.german.local_name","Allemand"
+"minecraft.language.japanese.local_name","Japonais"
+"minecraft.language.korean.local_name","Koréen"
+"minecraft.language.spanish.local_name","Espagnol"
+
 "minecraft_block.crafting_table.name","Table de fabrication"
 "minecraft_block.dirt.name","Block de terre"
 "minecraft_block.furnace.name","Four"
