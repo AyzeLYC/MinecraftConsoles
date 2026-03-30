@@ -1,0 +1,18 @@
+encoding,"utf-8"
+
+minecraft_block.crafting_table.name,"Table de fabrication"
+minecraft_block.dirt.name,"Block de terre"
+minecraft_block.furnace.name,"Four"
+minecraft_block.glass.name,"Block de verre"
+minecraft_block.green_glass.name,"Blcok de verre vert"
+minecraft_block.yellow_glass.name,"Block de verre jaune"
+
+minecraft_mob.chicken.name,"Poulet"
+minecraft_mob.cow.name,"Vache"
+minecraft_mob.ghast.name,"Ghast"
+minecraft_mob.mooshroom.name,"Vache à champignon"
+minecraft_mob.pigman.name,"Cochon zombie"
+minecraft_mob.piglin.name,"Piglin"
+minecraft_mob.zombified_piglin.name,"Piglin zombifié"
+minecraft_mob.skeleton.name,"Squelette"
+minecraft_mob.zombie.name,"Zombie"
